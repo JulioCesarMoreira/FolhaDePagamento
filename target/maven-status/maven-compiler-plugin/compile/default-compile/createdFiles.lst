@@ -1,0 +1,6 @@
+Model\Gerente.class
+Model\Funcionario.class
+View\PrincipalController.class
+Model\Vendedor.class
+Application\MainApp.class
+Model\Administrativo.class

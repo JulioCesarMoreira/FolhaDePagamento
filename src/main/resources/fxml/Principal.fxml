@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PrincipalController">
+   <children>
+      <StackPane fx:id="pnIncluirAlterar" prefHeight="287.0" prefWidth="493.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="vbIncluirAlterar" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="493.0">
+                     <children>
+                        <Label fx:id="lbFuncao">
+                           <font>
+                              <Font name="Berlin Sans FB" size="29.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="493.0">
+                     <children>
+                        <RadioButton fx:id="rdBtnVendedor" mnemonicParsing="false" onAction="#rdBtnVendedorSelect" selected="true" text="Vendedor">
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="TipoFuncionario" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rdBtnAdministrativo" mnemonicParsing="false" onAction="#rdBtnAdministrativoSelect" text="Administrativo" toggleGroup="$TipoFuncionario" />
+                        <RadioButton fx:id="rdBtnGerente" mnemonicParsing="false" onAction="#rdBtnGerenteSelect" text="Gerente" toggleGroup="$TipoFuncionario">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="97.0">
+                           <children>
+                              <Label fx:id="lbID" text="ID:" />
+                              <TextField fx:id="txtFldID" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="72.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="255.0">
+                           <children>
+                              <Label fx:id="lbNome" text="Nome:" />
+                              <TextField fx:id="txtFldNome" nodeOrientation="LEFT_TO_RIGHT">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="32.0">
+                           <children>
+                              <Label text="R$">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="91.0">
+                           <children>
+                              <Label fx:id="lbSalario" text="Salário:" />
+                              <TextField fx:id="txtFldSalario" prefHeight="25.0" prefWidth="70.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="30.0">
+                           <children>
+                              <Label text="R$">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="86.0">
+                           <children>
+                              <Label fx:id="lbConvenio" text="Convênio:" />
+                              <TextField fx:id="txtFldConvenio">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="lbRS" alignment="CENTER" prefHeight="100.0" prefWidth="29.0">
+                           <children>
+                              <Label text="R$">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="vbBonifVenda" alignment="CENTER" prefHeight="95.0" prefWidth="86.0">
+                           <children>
+                              <Label fx:id="lbBonifVenda" text="Vendas" />
+                              <TextField fx:id="txtFldBonifVenda">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXButton fx:id="btnAlterarIncluir" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#acConfirmaClick" style="-fx-cursor: hand;">
+                                 <graphic>
+                                    <MaterialDesignIconView glyphName="ACCOUNT_PLUS" onMouseClicked="#acConfirmaClick" size="230%" />
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Inserir Funcionario" textOverrun="CENTER_ELLIPSIS" />
+                                 </tooltip>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXButton onAction="#btnVoltarClick" text=" ">
+                                 <graphic>
+                                    <MaterialDesignIconView glyphName="UNDO_VARIANT" size="32" text="" wrappingWidth="29.0" />
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Voltar tela incial" />
+                                 </tooltip>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vbinfo" prefHeight="200.0" prefWidth="100.0" visible="false">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="76.0" prefWidth="482.0">
+                     <children>
+                        <Label text="VALOR TOTAL DA FOLHA DE PAGAMENTO">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="68.0" prefWidth="482.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Salario:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="lbTotalSalarios" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="68.0" prefWidth="482.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Proventos:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="lbTotalProventos" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Descontos:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="lbTotalDescontos" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Total final:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="lbTotalSalarioFinal" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="78.0" prefWidth="482.0">
+                     <children>
+                        <JFXButton onAction="#btnVoltarClick" text=" ">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="UNDO_VARIANT" size="32" text="" wrappingWidth="29.0" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Voltar tela incial" />
+                           </tooltip>
+                        </JFXButton>
+                        <JFXButton onAction="#btnGraficoFuncionarioClick" text=" ">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="CHART_PIE" size="32" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Gráfico pizza" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <VBox fx:id="vbInicio" layoutY="12.0" prefHeight="355.0" prefWidth="482.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="496.0">
+               <children>
+                  <MenuBar>
+                     <menus>
+                        <Menu mnemonicParsing="false" text="Menu">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#btnInclurClickView" text="Inserir" />
+                              <MenuItem mnemonicParsing="false" onAction="#btnAlterarView" text="Alterar" />
+                              <MenuItem mnemonicParsing="false" onAction="#btnExclurClick" text="Excluir" />
+                              <MenuItem mnemonicParsing="false" onAction="#funcaoSair" text="Sair do Programa" />
+                              <MenuItem mnemonicParsing="false" onAction="#btnGraficoFuncionarioClick" text="Grafico maiores salários" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <HBox prefHeight="53.0" prefWidth="482.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#btnInclurClickView" style="-fx-cursor: hand;" textFill="WHITE">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ACCOUNT_PLUS" size="230%" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Inserir Funcionario" textOverrun="CENTER_ELLIPSIS" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#btnAlterarView" style="-fx-cursor: hand;">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ACCOUNT_SETTINGS_VARIANT" size="230%" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Alterar Funcionario" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#btnExclurClick" style="-fx-cursor: hand;">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ACCOUNT_REMOVE" size="230%" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Remover Funcionario" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="103.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#salvaLista" style="-fx-cursor: hand;">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="DATABASE_PLUS" size="230%" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Salvar no Json" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="98.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#btnInfoClick" style="-fx-cursor: hand;">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="CURRENCY_USD" size="230%" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Valores" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <TableView fx:id="tbVwFolha" prefHeight="445.0" prefWidth="496.0" style="-fx-border-radius: 2; -fx-border-color: #000000; -fx-border-width: 2,5;">
+              <columns>
+                <TableColumn prefWidth="43.0" text="ID">
+                   <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>             
+                </TableColumn>
+                <TableColumn prefWidth="159.0" text="Nome">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nomeFormatado" />
+                    </cellValueFactory>
+                </TableColumn>                             
+                  <TableColumn prefWidth="44.0" text="Tipo">
+                   <cellValueFactory>
+                        <PropertyValueFactory property="tipo" />
+                    </cellValueFactory>
+                  </TableColumn>   
+                  <TableColumn prefWidth="83.0" text="Proventos">
+                      <cellValueFactory>
+                        <PropertyValueFactory property="proventosF" />
+                    </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="77.0" text="Descontos">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="descontosF" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="75.0" text="Salario Liquido">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="salarioF" />
+                     </cellValueFactory>
+                  </TableColumn>
+              </columns>
+            </TableView>
+            <HBox prefHeight="32.0" prefWidth="482.0">
+               <children>
+                  <Label style="-fx-wrap-text: 2;" text="Hora do PC:" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="lbEndereco" style="-fx-wrap-text: 2;" wrapText="true">
+                     <opaqueInsets>
+                        <Insets left="3.0" />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <StackPane fx:id="pnGrafico" prefHeight="355.0" prefWidth="482.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="482.0">
+                     <children>                        
+                        <Label text="Salários Totais:">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Book Antiqua Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSalarioT1" text="R$" />
+                        <Label fx:id="lbSalarioT">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="boxGraph" alignment="CENTER" prefHeight="446.0" prefWidth="496.0">
+                     <children>
+                        <PieChart fx:id="grafPizza" prefHeight="459.0" prefWidth="443.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="47.0" prefWidth="496.0">
+                     <children>
+                        <JFXButton onAction="#btnVoltarClick" text=" ">
+                           <tooltip>
+                              <Tooltip text="Voltar tela incial" />
+                           </tooltip>
+                           <graphic>
+                              <MaterialDesignIconView glyphName="UNDO_VARIANT" size="32" text="" wrappingWidth="29.0" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
